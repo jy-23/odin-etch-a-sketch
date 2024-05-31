@@ -16,3 +16,7 @@
 .square {
     border: 1px solid blue;
 }
+
+.color {
+    background-color: black;
+}

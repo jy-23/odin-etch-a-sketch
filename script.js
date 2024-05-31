@@ -1,6 +1,6 @@
 sketchPad = document.querySelector(".sketch-pad");
 
-sideLength = 75;
+sideLength = 16;
 sketchPadStyle = getComputedStyle(sketchPad);
 sketchPadPixel = parseInt(sketchPadStyle.width);
 squarePixel = Math.floor(sketchPadPixel / sideLength);
@@ -22,4 +22,13 @@ function createGrid() {
     }
 }
 
+
+
 createGrid();
+
+allSquares = document.querySelectorAll(".square");
+allSquares.forEach((sq) => {
+    sq.addEventListener("mouseover", (e) => {
+        e.target.classList.add("color");
+    });
+});
