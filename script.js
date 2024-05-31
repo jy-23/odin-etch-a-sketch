@@ -15,6 +15,12 @@ function createSquare() {
     sketchPad.appendChild(square);
 }
 
+function createRandColor() {
+    r = Math.floor(Math.random() * 256);
+    g = Math.floor(Math.random() * 256);
+    b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+}
 
 function createGrid() {
     squarePixel = Math.floor(sketchPadPixel / sideLength);
@@ -26,7 +32,8 @@ function createGrid() {
     allSquares = document.querySelectorAll(".square");
     allSquares.forEach((sq) => {
         sq.addEventListener("mouseover", (e) => {
-            e.target.setAttribute("class", "color");
+            e.target.style.backgroundColor = createRandColor();
+            //e.target.setAttribute("class", "color");
         });
     });
 }
