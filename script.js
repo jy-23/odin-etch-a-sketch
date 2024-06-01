@@ -12,6 +12,7 @@ function createSquare() {
     square.classList.add("square");
     square.style.width = `${squarePixel}px`;
     square.style.height = `${squarePixel}px`;
+    square.style.opacity = 0;
     sketchPad.appendChild(square);
 }
 
@@ -19,7 +20,16 @@ function createRandColor() {
     r = Math.floor(Math.random() * 256);
     g = Math.floor(Math.random() * 256);
     b = Math.floor(Math.random() * 256);
-    return `rgb(${r}, ${g}, ${b})`;
+    //return `rgb(${r}, ${g}, ${b})`;
+    
+    return `rgb(0, 0, 0)`;
+}
+
+function changeOpacity(sqDiv) {
+    sqDivStyle = getComputedStyle(sqDiv);
+    currOpacity = parseFloat(sqDivStyle.opacity);
+    if (currOpacity < 100) currOpacity += 0.1;
+    return currOpacity;
 }
 
 function createGrid() {
@@ -32,7 +42,8 @@ function createGrid() {
     allSquares = document.querySelectorAll(".square");
     allSquares.forEach((sq) => {
         sq.addEventListener("mouseover", (e) => {
-            e.target.style.backgroundColor = createRandColor();
+            e.target.style.opacity = changeOpacity(e.target);
+            e.target.style.backgroundColor = createRandColor(e.target);
             //e.target.setAttribute("class", "color");
         });
     });
